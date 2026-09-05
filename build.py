@@ -27,6 +27,8 @@ PAGES = [
          desc="Colorado is having its worst bear year on record. Aspen Bear Week restores the native forage bears lost to drought, far from town. Habitat restoration, not feeding."),
     dict(slug="the-work",     nav="The Work",     title="The Work",
          desc="How Aspen Bear Week restores native bear forage: parcel analysis to find the ground, replanting Gambel oak, serviceberry and chokecherry, and Bear Aware education."),
+    dict(slug="why-so-many-bears", nav="Why This Year", title="Why there are so many bears this year",
+         desc="The worst natural bear food year Colorado has recorded since 2008, explained: the warmest March in 132 years, snowpack peaking 28 days early, a late spring freeze, and 294 bears killed by 31 August."),
     dict(slug="bear-aware",   nav="Bear Aware",   title="Bear Aware",
          desc="Why there are so many bears in Aspen this year, what to do if you see one, the Aspen and Pitkin County trash rules, and why habitat restoration is not feeding."),
     dict(slug="bear-week",    nav="Bear Week",    title="Bear Week",
@@ -230,6 +232,7 @@ def build_bodies():
         body = body.replace("<img ", '<img loading="lazy" decoding="async" ')
         bodies[slug] = body
     bodies["get-involved"] = body_involved(rel("get-involved"))
+    bodies["why-so-many-bears"] = body_why(rel("why-so-many-bears"))
     bodies["privacy"] = body_privacy(rel("privacy"))
     return bodies
 
@@ -377,6 +380,14 @@ def body_privacy(r):
   </div>
 </section>
 """
+
+
+
+def body_why(r):
+    """The knowledge-layer centrepiece. Charts are shared with the research PDF."""
+    return open("src/why-page.html", encoding="utf-8").read().replace("__R__", r)
+
+
 
 
 def main():

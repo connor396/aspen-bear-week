@@ -294,24 +294,31 @@
      Numbered because it genuinely is a sequence: each step needs the one above
      it. This is the proof layer doing double duty as the reason there is no
      donate button. */
+  /* Default to the light surface. Ink-band overrides follow, because this list
+     is used on both grounds and bone-on-bone text is invisible. */
   .gate{list-style:none;counter-reset:g;margin:clamp(28px,4vw,44px) 0 0;padding:0;
-        border-top:1px solid rgba(253,251,228,.28)}
+        border-top:1px solid var(--rule-hard)}
   .gate-item{counter-increment:g;display:grid;grid-template-columns:auto 1fr;
              gap:16px 18px;padding:20px 0;
-             border-bottom:1px solid rgba(253,251,228,.28)}
+             border-bottom:1px solid var(--rule)}
   .gate-item::before{content:counter(g);font-family:var(--display);
-             font-size:clamp(26px,3.4vw,38px);line-height:.9;color:var(--gold);
+             font-size:clamp(26px,3.4vw,38px);line-height:.9;color:var(--green);
              font-variant-numeric:tabular-nums;grid-row:1 / span 2}
   .gate-item h3{margin:0;font-size:clamp(16px,2vw,19px);text-transform:none;
              letter-spacing:-.005em;align-self:center}
-  .gate-item p{margin:0;grid-column:2;font-size:15px;color:var(--bone);opacity:.74;
+  .gate-item p{margin:0;grid-column:2;font-size:15px;color:var(--oak);
              max-width:56ch}
+  .band-ink .gate{border-top-color:rgba(253,251,228,.28)}
+  .band-ink .gate-item{border-bottom-color:rgba(253,251,228,.28)}
+  .band-ink .gate-item::before{color:var(--gold)}
+  .band-ink .gate-item p{color:var(--bone);opacity:.74}
   @media (max-width:600px){
     .gate-item{gap:8px 14px}
     .gate-item h3{align-self:start}
   }
   .gate-foot{font-family:var(--mono);font-size:12px;letter-spacing:.05em;line-height:1.8;
-             margin:26px 0 0;max-width:56ch;opacity:.82}
+             margin:26px 0 0;max-width:56ch;color:var(--oak)}
+  .band-ink .gate-foot{color:var(--bone);opacity:.82}
 
   /* Footer nav: real targets, so it is a nav rather than a line of text.
      Separators are the gaps, not middots. */
@@ -332,3 +339,30 @@
       transition-duration:.01ms !important;scroll-behavior:auto !important}
     .btn:hover{transform:none}
   }
+
+  /* ============ CHARTS ============
+     Same computed SVGs the research PDF uses, so the page and the document
+     cannot disagree about a number. Ink stroke plus a direct value label on
+     every bar is the relief the gold's low contrast obliges. */
+  .ch{margin:clamp(28px,4vw,44px) 0 0;border:2px solid var(--ink);background:var(--bone-2);
+      padding:22px 20px 18px}
+  .band .ch{background:var(--bone)}
+  .ch figcaption{font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;line-height:1.7;
+                 color:var(--oak);margin-top:13px;border-top:1px solid var(--rule);padding-top:11px}
+  .ch-title{font-family:var(--display);font-size:17px;line-height:1.25;margin:0 0 4px}
+  .ch-sub{font-size:14.5px;color:var(--oak);margin:0 0 8px;max-width:58ch}
+  .chart{width:100%;height:auto;display:block;overflow:visible}
+  .chart .ax{font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:11px;fill:#6F4E37}
+  .chart .sub{font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:9.5px;fill:#6F4E37;opacity:.85}
+  .chart .val{font-family:"Archivo",sans-serif;font-size:12px;font-weight:700;fill:#3A2A16}
+  /* The SVG scales with its viewBox, so CSS px here are user units, not device
+     px. At 375 the chart renders about 0.41x, so these are sized to land near
+     11px on the phone rather than 4px. */
+  @media (max-width:640px){
+    .ch{padding:16px 12px 14px}
+    .chart .ax{font-size:26px} .chart .val{font-size:27px} .chart .sub{font-size:21px}
+  }
+  .band-ink .grid3{background:rgba(253,251,228,.22);border-color:rgba(253,251,228,.22)}
+  .band-ink .grid3 > *{background:var(--ink)}
+  .band-ink .fig .eyebrow{color:var(--gold)}
+  .band-ink .fig small{color:var(--bone);opacity:.75}
