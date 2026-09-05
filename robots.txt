@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://connor396.github.io/aspen-bear-week/sitemap.xml
