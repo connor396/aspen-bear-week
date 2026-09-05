@@ -1,0 +1,722 @@
+<title>Aspen Bear Week</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Archivo:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+  :root{
+    --gold:#F2A900; --gold-deep:#D89400;
+    --ink:#3A2A16; --oak:#6F4E37;
+    --green:#1B4F3A; --green-lift:#25654B;
+    --bone:#FDFBE4; --bone-2:#F5F1D8;
+    --rule:rgba(58,42,22,.16); --rule-hard:rgba(58,42,22,.4);
+    --display:"Archivo Black","Arial Black",Helvetica,sans-serif;
+    --body:"Archivo","Helvetica Neue",Helvetica,Arial,sans-serif;
+    --mono:"IBM Plex Mono",ui-monospace,"SF Mono",Menlo,monospace;
+    --pad:clamp(18px,4.5vw,64px); --maxw:1220px; --navh:60px;
+  }
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;overflow-x:clip}
+  body{margin:0;background:var(--bone);color:var(--ink);font-family:var(--body);
+       font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased;
+       overflow-x:clip;max-width:100vw}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding-inline:var(--pad)}
+  img{max-width:100%}
+
+  .eyebrow{font-family:var(--mono);font-size:11px;font-weight:500;
+           letter-spacing:.16em;text-transform:uppercase;display:block}
+
+  /* ============ NAV ============ */
+  .nav{position:sticky;top:0;z-index:60;background:var(--gold);
+       border-bottom:2px solid var(--ink)}
+  .nav-in{max-width:var(--maxw);margin:0 auto;padding-inline:var(--pad);
+          min-height:var(--navh);display:flex;align-items:center;gap:18px}
+  .brand{font-family:var(--display);font-size:15px;text-transform:uppercase;
+         letter-spacing:-.01em;color:var(--ink);text-decoration:none;
+         line-height:1.05;white-space:nowrap;margin-right:auto}
+  .brand small{display:block;font-family:var(--mono);font-size:8.5px;
+               letter-spacing:.18em;opacity:.7;font-weight:500}
+  .links{display:flex;gap:6px;align-items:center}
+  .links a{font-family:var(--mono);font-size:11.5px;letter-spacing:.1em;
+           text-transform:uppercase;color:var(--ink);text-decoration:none;
+           padding:10px 11px;border-radius:2px;white-space:nowrap}
+  .links a:hover{background:rgba(58,42,22,.1)}
+  .links a[aria-current="page"]{background:var(--ink);color:var(--gold)}
+  .nav .cta{font-family:var(--display);font-size:12px;letter-spacing:.05em;
+            text-transform:uppercase;background:var(--green);color:var(--bone);
+            text-decoration:none;padding:13px 18px;border:2px solid var(--ink);
+            white-space:nowrap;min-height:44px;display:inline-flex;align-items:center}
+  .nav .cta:hover{background:var(--green-lift)}
+  a:focus-visible,button:focus-visible{outline:3px solid var(--ink);outline-offset:2px}
+  .burger{display:none;background:var(--ink);color:var(--gold);border:0;
+          font-family:var(--mono);font-size:11px;letter-spacing:.1em;
+          text-transform:uppercase;padding:0 14px;min-height:44px;cursor:pointer}
+  @media (max-width:900px){
+    .links{position:absolute;top:100%;left:0;right:0;background:var(--gold);
+           border-bottom:2px solid var(--ink);flex-direction:column;
+           align-items:stretch;gap:0;padding:6px var(--pad) 14px;display:none}
+    .links.open{display:flex}
+    .links a{padding:14px 4px;border-top:1px solid var(--rule);font-size:13px}
+    .burger{display:inline-flex;align-items:center}
+    .nav .cta{font-size:11px;padding:12px 14px}
+  }
+  /* at phone width the three nav items must still fit on one line */
+  .cta-long{display:inline}
+  .cta-short{display:none}
+  @media (max-width:520px){
+    .nav-in{gap:8px;min-height:56px}
+    .brand{font-size:12.5px;letter-spacing:0}
+    .brand small{display:none}
+    .burger{padding:0 10px;font-size:10px}
+    .nav .cta{font-size:11px;padding:10px 12px;letter-spacing:.02em}
+    .cta-long{display:none}
+    .cta-short{display:inline}
+  }
+
+  /* ============ SHARED ============ */
+  .view{display:none}
+  .view.on{display:block}
+  section{padding-block:clamp(46px,7vw,96px)}
+  .tight{padding-block:clamp(34px,5vw,62px)}
+  .band{background:var(--bone-2)}
+  .band-gold{background:var(--gold)}
+  .band-ink{background:var(--ink);color:var(--bone)}
+  .ruled{border-top:1px solid var(--rule)}
+
+  h1,h2,h3{text-wrap:balance;margin:0}
+  h2{font-family:var(--display);font-size:clamp(27px,4.3vw,50px);line-height:1.03;
+     letter-spacing:-.015em;margin-top:14px;max-width:19ch}
+  h3{font-family:var(--display);font-size:19px;line-height:1.2;
+     text-transform:uppercase;letter-spacing:.01em}
+  .lede{font-size:clamp(16.5px,1.8vw,20px);max-width:62ch;margin:20px 0 0;color:var(--oak)}
+  .band-ink .lede,.band-gold .lede{color:inherit;opacity:.9}
+  p{max-width:64ch}
+
+  .btn{display:inline-flex;align-items:center;min-height:48px;
+       font-family:var(--display);font-size:14px;text-transform:uppercase;
+       letter-spacing:.045em;text-decoration:none;padding:14px 26px;
+       border:2px solid var(--ink);background:var(--green);color:var(--bone);
+       transition:background .15s ease,transform .15s ease}
+  .btn:hover{background:var(--green-lift);transform:translateY(-2px)}
+  .btn.ghost{background:transparent;color:var(--ink)}
+  .btn.ghost:hover{background:rgba(58,42,22,.09)}
+  .btns{display:flex;flex-wrap:wrap;gap:12px;margin-top:clamp(24px,3.5vw,36px)}
+
+  /* ============ DUOTONE MEDIA ============ */
+  .media{position:relative;overflow:hidden;background:var(--gold);
+         border:2px solid var(--ink);line-height:0}
+  .media img{width:100%;display:block;filter:grayscale(1) contrast(1.12) brightness(.98);
+             mix-blend-mode:luminosity}
+  .media figcaption{position:absolute;left:0;bottom:0;background:var(--ink);
+                    color:var(--bone);font-family:var(--mono);font-size:10px;
+                    letter-spacing:.12em;text-transform:uppercase;padding:7px 12px;
+                    line-height:1.4;max-width:82%}
+
+  /* ============ HERO ============ */
+  .hero{background:var(--gold);border-bottom:3px solid var(--ink);
+        padding-block:clamp(34px,5vw,60px) 0;overflow:hidden}
+  .wordmark{font-family:var(--display);font-size:clamp(58px,17.5vw,158px);
+            line-height:.85;letter-spacing:-.03em;text-transform:uppercase}
+  .wordmark span{display:block}
+  .claim{font-family:var(--display);font-size:clamp(22px,4.2vw,34px);
+         line-height:1.1;margin:clamp(22px,3.2vw,34px) 0 0;max-width:18ch}
+  .hero-grid{display:grid;grid-template-columns:1fr;gap:clamp(30px,4vw,44px);
+             align-items:end}
+  .hero .media{border-width:2px 0 0 0;margin-top:clamp(34px,5vw,54px)}
+  @media (min-width:960px){
+    .hero-grid{grid-template-columns:1.05fr .95fr;gap:52px}
+    .hero .media{border:2px solid var(--ink);margin-top:0;align-self:stretch}
+    .hero .media img{height:100%;object-fit:cover}
+  }
+  .stripes{display:flex;flex-direction:column;gap:4px;max-width:420px;margin-top:26px}
+  .stripes span{display:block;height:6px;background:var(--ink);opacity:.85}
+  .stripes span:nth-child(2){height:12px;background:var(--green);opacity:1}
+  .stripes span:nth-child(3){height:6px;background:var(--oak)}
+  .stripes span:nth-child(4){height:3px;background:var(--ink);opacity:.5}
+
+  /* ============ STATUS BAR ============ */
+  .status-bar{background:var(--ink);color:var(--bone);
+              font-family:var(--mono);font-size:11.5px;letter-spacing:.06em;
+              padding-block:13px;line-height:1.6}
+  .status-bar b{color:var(--gold);font-weight:500}
+
+  /* ============ GRIDS (1 or 3, never an orphan) ============ */
+  .grid3{display:grid;grid-template-columns:1fr;gap:1px;background:var(--rule);
+         border:1px solid var(--rule);margin-top:clamp(28px,4vw,46px)}
+  .grid3 > *{background:var(--bone);padding:24px 22px}
+  .band .grid3 > *{background:var(--bone-2)}
+  @media (min-width:780px){ .grid3{grid-template-columns:repeat(3,1fr)} }
+
+  .fig b{display:block;font-family:var(--display);font-size:clamp(32px,4vw,46px);
+         line-height:1;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+  .fig .eyebrow{color:var(--oak);margin-top:11px}
+  .fig small{display:block;margin-top:8px;font-size:14px;color:var(--oak);line-height:1.45}
+
+  .steps{display:grid;grid-template-columns:1fr;gap:clamp(26px,3.5vw,44px);
+         margin-top:clamp(30px,4vw,50px)}
+  @media (min-width:780px){ .steps{grid-template-columns:repeat(3,1fr)} }
+  .step{border-top:3px solid var(--ink);padding-top:16px}
+  .step .eyebrow{color:var(--oak)}
+  .step h3{margin:11px 0 8px}
+  .step p{font-size:15.5px;margin:0;color:var(--oak)}
+
+  /* ============ DISTINCTION ============ */
+  .distinction{display:grid;grid-template-columns:1fr;border:2px solid var(--ink);
+               margin-top:clamp(28px,4vw,46px)}
+  .distinction > div{padding:24px 22px}
+  .distinction .yes{background:var(--green);color:var(--bone)}
+  .distinction h3{font-size:16px;margin:0 0 13px}
+  .distinction ul{margin:0;padding-left:18px;font-size:15.5px;line-height:1.6}
+  .distinction li + li{margin-top:6px}
+  .distinction .no{border-bottom:2px solid var(--ink)}
+  @media (min-width:720px){
+    .distinction{grid-template-columns:1fr 1fr}
+    .distinction .no{border-bottom:0;border-right:2px solid var(--ink)}
+  }
+
+  /* ============ KNOWLEDGE CARDS ============ */
+  .cards{display:grid;grid-template-columns:1fr;gap:clamp(20px,2.5vw,26px);
+         margin-top:clamp(30px,4vw,50px)}
+  @media (min-width:800px){ .cards{grid-template-columns:1fr 1fr} }
+  .card{border:2px solid var(--ink);background:var(--bone);
+        padding:26px 24px;display:flex;flex-direction:column;gap:12px}
+  .band .card{background:var(--bone-2)}
+  .card .eyebrow{color:var(--oak)}
+  .card h3{font-size:20px}
+  .card p{font-size:15.5px;margin:0;color:var(--oak)}
+  .card ul{margin:0;padding-left:18px;font-size:15.5px;color:var(--oak);line-height:1.6}
+  .card li + li{margin-top:6px}
+  .card .src{margin-top:auto;padding-top:8px;font-family:var(--mono);
+             font-size:10px;letter-spacing:.09em;text-transform:uppercase;
+             color:var(--oak);opacity:.85;line-height:1.5}
+
+  /* ============ FACTS LIST ============ */
+  .facts{margin-top:clamp(28px,4vw,44px);border-top:1px solid var(--rule)}
+  .fact{display:grid;grid-template-columns:1fr;gap:4px;
+        padding:18px 0;border-bottom:1px solid var(--rule)}
+  @media (min-width:720px){ .fact{grid-template-columns:230px 1fr;gap:24px;align-items:baseline} }
+  .fact dt{font-family:var(--mono);font-size:11px;letter-spacing:.13em;
+           text-transform:uppercase;color:var(--oak)}
+  .fact dd{margin:0;font-size:16px;max-width:60ch}
+
+  /* ============ PARTNER STRIP ============ */
+  .decal{display:flex;flex-direction:column;align-items:center;justify-content:center;
+         text-align:center;background:var(--gold);border:3px solid var(--ink);
+         border-radius:50%;aspect-ratio:1;width:min(240px,66vw);gap:6px;padding:22px}
+  .decal .band-line{width:74%;height:5px;background:var(--green)}
+  .decal .t1{font-family:var(--display);font-size:clamp(13px,3.4vw,16px);
+             text-transform:uppercase;line-height:1.12}
+  .decal .t2{font-family:var(--mono);font-size:9.5px;letter-spacing:.11em;
+             text-transform:uppercase;line-height:1.5;max-width:22ch}
+  .split{display:grid;grid-template-columns:1fr;gap:clamp(28px,4vw,52px);align-items:center;
+         margin-top:clamp(28px,4vw,44px)}
+  @media (min-width:820px){ .split{grid-template-columns:280px 1fr} }
+
+  /* ============ FOOTER ============ */
+  footer{background:var(--ink);color:var(--bone);padding-block:44px}
+  .foot{display:grid;grid-template-columns:1fr;gap:26px}
+  @media (min-width:780px){ .foot{grid-template-columns:1.3fr 1fr} }
+  footer .eyebrow{opacity:.65}
+  footer p{font-family:var(--mono);font-size:11.5px;line-height:1.7;
+           opacity:.85;max-width:52ch;margin:10px 0 0}
+  footer a{color:var(--gold)}
+
+  @media (prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto}
+    *{animation:none !important;transition:none !important}
+  }
+</style>
+
+<nav class="nav">
+  <div class="nav-in">
+    <a class="brand" href="#/">Aspen Bear Week<small>Aspen, Colorado</small></a>
+    <button class="burger" id="burger" aria-expanded="false" aria-controls="links">Menu</button>
+    <div class="links" id="links">
+      <a href="#/work">The Work</a>
+      <a href="#/aware">Bear Aware</a>
+      <a href="#/week">Bear Week</a>
+      <a href="#/about">About</a>
+    </div>
+    <a class="cta" href="#/involved"><span class="cta-long">Get Involved</span><span class="cta-short">Join</span></a>
+  </div>
+</nav>
+
+<!-- ================= HOME ================= -->
+<div class="view" id="v-home">
+  <header class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <span class="eyebrow" style="opacity:.75">Colorado's worst bear year on record</span>
+        <h1 class="wordmark"><span>Aspen</span><span>Bear</span><span>Week</span></h1>
+        <p class="claim">Protect what makes Aspen wild.</p>
+        <div class="stripes" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
+        <div class="btns">
+          <a class="btn" href="#/involved">Get Involved</a>
+          <a class="btn ghost" href="#/work">See the plan</a>
+        </div>
+      </div>
+      <figure class="media" style="margin:0">
+        <img src="{{IMG_GROVE}}" alt="A dense aspen grove at peak autumn gold in the Colorado high country.">
+        <figcaption>Illustrative image &middot; not documentation of a specific site</figcaption>
+      </figure>
+    </div>
+  </header>
+
+  <div class="status-bar">
+    <div class="wrap">
+      <b>Status:</b> organisation in formation, September 2026.
+      Not yet accepting donations. First target: <b>one restoration site identified and permitted by spring 2027.</b>
+    </div>
+  </div>
+
+  <section>
+    <div class="wrap">
+      <span class="eyebrow">The situation</span>
+      <h2>The gold came. The berries did not.</h2>
+      <p class="lede">Drought and low snowpack failed the berry and acorn crops that Colorado's
+        black bears depend on. With nothing on the mountain, they came down to us.</p>
+      <div class="grid3">
+        <div class="fig"><b>7,000+</b><span class="eyebrow">Statewide bear reports</span>
+          <small>1 January to 20 August 2026. The same window in 2025 saw roughly 5,400.</small></div>
+        <div class="fig"><b>20 hrs</b><span class="eyebrow">Foraging, per day</span>
+          <small>In hyperphagia a bear searches almost around the clock to build winter fat.</small></div>
+        <div class="fig"><b>Sep&ndash;Oct</b><span class="eyebrow">When they reach town</span>
+          <small>The weeks the aspens turn gold are the weeks bears are most desperate.</small></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="band ruled">
+    <div class="wrap">
+      <span class="eyebrow">The plan</span>
+      <h2>Put the food back where it belongs.</h2>
+      <p class="lede">Aspen has spent years, correctly, on locking down trash. Nobody is working
+        on the other half of the problem: the wild food supply itself. That is the gap we exist to close.</p>
+      <div class="steps">
+        <div class="step"><span class="eyebrow">01 &mdash; Find</span><h3>Locate the ground</h3>
+          <p>Satellite imagery and parcel data rank sites on soil, slope, aspect, water and existing
+             cover, and identify who owns each one.</p></div>
+        <div class="step"><span class="eyebrow">02 &mdash; Restore</span><h3>Replant native forage</h3>
+          <p>Gambel oak, serviceberry, chokecherry and hawthorn, established well away from homes
+             and trails.</p></div>
+        <div class="step"><span class="eyebrow">03 &mdash; Teach</span><h3>Bear Aware</h3>
+          <p>Most visitors have never been told how to behave in bear country. Plain, unmissable
+             education for the people who need it.</p></div>
+      </div>
+      <div class="btns"><a class="btn ghost" href="#/work">How the work happens</a></div>
+    </div>
+  </section>
+
+  <section class="ruled">
+    <div class="wrap">
+      <span class="eyebrow">An important distinction</span>
+      <h2>This is habitat restoration. It is not feeding bears.</h2>
+      <p class="lede">Feeding bears is illegal in Colorado, and for good reason: it concentrates
+        animals, creates dependence, and teaches them to associate people with food. We do the
+        opposite, and the difference is not a technicality.</p>
+      <div class="distinction">
+        <div class="no"><h3>Feeding</h3><ul>
+          <li>Food put out for animals</li><li>Draws bears to a single point</li>
+          <li>Close to people</li><li>Creates dependence on humans</li>
+          <li>Illegal, and rightly so</li></ul></div>
+        <div class="yes"><h3>Restoration</h3><ul>
+          <li>Native plants put in the ground</li><li>Spreads forage across a landscape</li>
+          <li>Deliberately far from development</li><li>Restores a bear's natural range</li>
+          <li>Standard conservation practice</li></ul></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="band-gold ruled">
+    <div class="wrap">
+      <span class="eyebrow">For Aspen businesses</span>
+      <h2>A week the whole town gets behind.</h2>
+      <div class="split">
+        <div class="decal" role="img" aria-label="Window decal reading: Proud Partner, Aspen Bear Week, Protect what makes Aspen wild.">
+          <span class="band-line" aria-hidden="true"></span>
+          <span class="t1">Proud Partner<br>Aspen Bear Week</span>
+          <span class="t2">Protect what makes Aspen wild</span>
+          <span class="band-line" aria-hidden="true"></span>
+        </div>
+        <div>
+          <p style="margin-top:0">Partner businesses get the decal for the window, a listing on this
+            site, and materials that answer the bear questions visitors actually ask at the counter.
+            No fee to join in the first year.</p>
+          <div class="btns"><a class="btn" href="#/week">Become a partner</a></div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ================= THE WORK ================= -->
+<div class="view" id="v-work">
+  <section class="band-gold" style="border-bottom:3px solid var(--ink)">
+    <div class="wrap">
+      <span class="eyebrow">The Work</span>
+      <h2>Restoring the food supply, on ground chosen with evidence.</h2>
+      <p class="lede" style="color:var(--ink);opacity:.85">Three stages. The first one is the
+        one almost nobody does, and it is why this can work.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <figure class="media" style="margin:0 0 clamp(30px,4vw,48px)">
+        <img src="{{IMG_SCRUB}}" alt="A Colorado mountainside covered in Gambel oak and serviceberry scrub turning copper in autumn.">
+        <figcaption>Gambel oak and serviceberry scrub &middot; illustrative image</figcaption>
+      </figure>
+      <span class="eyebrow">Stage 01</span>
+      <h2>Find the ground.</h2>
+      <p class="lede">Machine learning over satellite imagery, joined to normalised parcel records,
+        scores candidate land on forest cover, soils, slope, aspect, water proximity and fire
+        history, then returns who owns each parcel and how to reach them.</p>
+      <p class="lede">That matters because the mountains around Aspen are a patchwork: White River
+        National Forest, Pitkin County Open Space, City of Aspen parcels, and private land. Each one
+        has a different owner and a different permission path. Knowing which is which before anyone
+        promises a location is the difference between a plan and a wish.</p>
+      <dl class="facts">
+        <div class="fact"><dt>Scored on</dt><dd>Slope, aspect, soils, existing oak and aspen cover, water proximity, fire history, distance from development.</dd></div>
+        <div class="fact"><dt>Returns</dt><dd>A ranked shortlist with ownership and jurisdiction identified for every parcel.</dd></div>
+        <div class="fact"><dt>Sequencing</dt><dd>Private land and county open space first. Federal land needs written authorisation and takes far longer.</dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <section class="band ruled">
+    <div class="wrap">
+      <span class="eyebrow">Stage 02</span>
+      <h2>Replant native forage.</h2>
+      <p class="lede">Colorado Parks and Wildlife already tracks the species that carry bears
+        through autumn: Gambel oak, serviceberry, chokecherry, hawthorn and pinon pine. Colorado's
+        largest black bear populations sit where Gambel oak and aspen meet open serviceberry and
+        chokecherry. We put those species back, at scale, far from where people live.</p>
+      <div class="grid3">
+        <div class="fig"><b>5</b><span class="eyebrow">Core forage species</span>
+          <small>Gambel oak, serviceberry, chokecherry, hawthorn, pinon pine.</small></div>
+        <div class="fig"><b>3&ndash;5 yr</b><span class="eyebrow">To meaningful yield</span>
+          <small>This is a multi-year restoration, not a season. Funding has to match that.</small></div>
+        <div class="fig"><b>0</b><span class="eyebrow">Food placed out</span>
+          <small>Nothing is ever put out for animals. Plants go in the ground and stay there.</small></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="ruled">
+    <div class="wrap">
+      <span class="eyebrow">Stage 03</span>
+      <h2>Bear Aware.</h2>
+      <p class="lede">Roughly half the problem is people who have never been told the rules.
+        Visitors arrive, leave a car unlocked with food in it, put a bin out the night before, and
+        create a habituated bear that someone else has to deal with. Education is not the soft part
+        of this work. It is the part with the fastest return.</p>
+      <div class="btns"><a class="btn ghost" href="#/aware">Read the Bear Aware guides</a></div>
+    </div>
+  </section>
+
+  <section class="band-ink">
+    <div class="wrap">
+      <span class="eyebrow">What funding pays for</span>
+      <h2 style="color:var(--bone)">Where the money goes.</h2>
+      <dl class="facts" style="border-color:rgba(253,251,228,.2)">
+        <div class="fact" style="border-color:rgba(253,251,228,.2)"><dt style="color:var(--gold)">Site assessment</dt><dd>The imagery and parcel analysis that produces the shortlist.</dd></div>
+        <div class="fact" style="border-color:rgba(253,251,228,.2)"><dt style="color:var(--gold)">Plant stock</dt><dd>Native, locally sourced seedlings and the labour to establish them.</dd></div>
+        <div class="fact" style="border-color:rgba(253,251,228,.2)"><dt style="color:var(--gold)">Establishment care</dt><dd>Browse protection and water through the first seasons, when losses happen.</dd></div>
+        <div class="fact" style="border-color:rgba(253,251,228,.2)"><dt style="color:var(--gold)">Education</dt><dd>Materials for businesses, lodging and visitors across the valley.</dd></div>
+      </dl>
+    </div>
+  </section>
+</div>
+
+<!-- ================= BEAR AWARE ================= -->
+<div class="view" id="v-aware">
+  <section class="band-gold" style="border-bottom:3px solid var(--ink)">
+    <div class="wrap">
+      <span class="eyebrow">Bear Aware</span>
+      <h2>What everyone in this valley should know.</h2>
+      <p class="lede" style="color:var(--ink);opacity:.85">Four things. None of them take more
+        than two minutes, and between them they prevent most of what goes wrong.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="cards">
+        <article class="card">
+          <span class="eyebrow">Guide 01</span>
+          <h3>Why there are so many bears this year</h3>
+          <p>2026 is on track to be the worst bear year Colorado has recorded since statewide
+            digital tracking began in 2019. Low snowpack and drought failed the berry, acorn and
+            nut crops across much of the state.</p>
+          <p>From late summer bears enter hyperphagia and can spend up to twenty hours a day
+            feeding to build the fat they need to survive winter. When the mountain has nothing,
+            that search reaches town.</p>
+          <span class="src">Source: Colorado Parks and Wildlife reporting, 2026</span>
+        </article>
+
+        <article class="card">
+          <span class="eyebrow">Guide 02</span>
+          <h3>If you see a bear</h3>
+          <ul>
+            <li>If it has not seen you, move away quietly and give it a clear escape route.</li>
+            <li>If it has, stand still, talk in a normal voice and stay calm.</li>
+            <li>Back away slowly. Never run, which can trigger a chase.</li>
+            <li>Never get between a mother and her cubs.</li>
+            <li>Never take a selfie and never crowd it for a photo.</li>
+            <li>Rule of thumb: if your thumb at arm's length does not cover the animal, you are too close.</li>
+          </ul>
+          <span class="src">Source: Colorado Parks and Wildlife guidance</span>
+        </article>
+
+        <article class="card">
+          <span class="eyebrow">Guide 03</span>
+          <h3>The trash rules, plainly</h3>
+          <ul>
+            <li>Wildlife-resistant containers are required, and they must be latched and secured.</li>
+            <li>Bins go out after 6am on collection day and back in by 7pm the same day.</li>
+            <li>Fines escalate: $250, then $500, then $1,000.</li>
+            <li>Pitkin County Code Title 6, Section 6.44 carries the county requirement.</li>
+          </ul>
+          <p>Take down bird feeders, clean the grill, keep pet food indoors, clear fruit from trees
+            and the ground, and lock ground-floor doors and windows.</p>
+          <span class="src">Source: City of Aspen and Pitkin County code</span>
+        </article>
+
+        <article class="card">
+          <span class="eyebrow">Guide 04</span>
+          <h3>Restoration is not feeding</h3>
+          <p>Intentionally feeding or luring bears is illegal in Colorado under C.R.S. 33-6-131,
+            and in 2026 the penalties increased: the standard changed from "intentionally" to
+            "knowingly", the first-offence warning was removed, and the third-offence fine rose to
+            $5,000.</p>
+          <p>Putting native plants into the ground far from development is habitat restoration, a
+            standard conservation practice. Nothing is ever placed out for an animal to find.</p>
+          <span class="src">Source: C.R.S. 33-6-131; Colorado HB26-1342, signed May 2026</span>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="band ruled">
+    <div class="wrap">
+      <figure class="media" style="margin:0 0 clamp(28px,4vw,44px)">
+        <img src="{{IMG_BEAR}}" alt="A single black bear at a distance, moving through open autumn scrub on a mountainside.">
+        <figcaption>Illustrative image &middot; not a photograph of a local animal</figcaption>
+      </figure>
+      <span class="eyebrow">A note on the pictures</span>
+      <h2>We would rather tell you than let you assume.</h2>
+      <p class="lede">The photographs on this site are illustrative. They are not documentation of
+        specific sites, specific animals or specific events in Aspen, and they are captioned that
+        way wherever they appear. When we have images of our own work, we will use those instead
+        and say so.</p>
+    </div>
+  </section>
+</div>
+
+<!-- ================= BEAR WEEK ================= -->
+<div class="view" id="v-week">
+  <section class="band-gold" style="border-bottom:3px solid var(--ink)">
+    <div class="wrap">
+      <span class="eyebrow">The event</span>
+      <h2>A week that puts the whole town behind it.</h2>
+      <p class="lede" style="color:var(--ink);opacity:.85">Businesses, visitors and residents,
+        for one week, funding the restoration work and teaching people how to share a valley
+        with bears.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <figure class="media" style="margin:0 0 clamp(30px,4vw,48px)">
+        <img src="{{IMG_VALLEY}}" alt="Aerial view of a Colorado mountain valley in autumn, gold aspen running up dark evergreen slopes.">
+        <figcaption>Illustrative image &middot; Colorado high country in autumn</figcaption>
+      </figure>
+      <span class="eyebrow">How it is shaped</span>
+      <h2>Two seasons, two different jobs.</h2>
+      <div class="steps">
+        <div class="step"><span class="eyebrow">Winter</span><h3>The week that raises</h3>
+          <p>Aspen is full, and the town has a deep tradition of doing this well. Winter is when
+             the funding for a planting season gets committed.</p></div>
+        <div class="step"><span class="eyebrow">Spring</span><h3>The season that plants</h3>
+          <p>Plants go in the ground when they can establish. This is the work the winter week
+             exists to pay for.</p></div>
+        <div class="step"><span class="eyebrow">Summer</span><h3>The months that matter</h3>
+          <p>Bears are active and visitors are here. Education runs hardest exactly when the
+             risk is highest.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="band ruled">
+    <div class="wrap">
+      <span class="eyebrow">For businesses</span>
+      <h2>Become a partner.</h2>
+      <div class="split">
+        <div class="decal" role="img" aria-label="Window decal reading: Proud Partner, Aspen Bear Week, Protect what makes Aspen wild.">
+          <span class="band-line" aria-hidden="true"></span>
+          <span class="t1">Proud Partner<br>Aspen Bear Week</span>
+          <span class="t2">Protect what makes Aspen wild</span>
+          <span class="band-line" aria-hidden="true"></span>
+        </div>
+        <div>
+          <p style="margin-top:0">Partners display the decal, appear in the partner directory on
+            this site, and get short printed answers to the bear questions visitors ask at the
+            counter. In the first year there is no fee to join.</p>
+          <p>Restaurants, lodging, retail and services all work. If you serve visitors, you are
+            already having these conversations.</p>
+          <div class="btns"><a class="btn" href="#/involved">Register interest</a></div>
+        </div>
+      </div>
+      <dl class="facts">
+        <div class="fact"><dt>Dates</dt><dd>Not set. A city special event permit needs 90 days of lead time, so the date follows the permit, not the other way round.</dd></div>
+        <div class="fact"><dt>Partner directory</dt><dd>Opens when the first partners are confirmed.</dd></div>
+      </dl>
+    </div>
+  </section>
+</div>
+
+<!-- ================= ABOUT ================= -->
+<div class="view" id="v-about">
+  <section class="band-gold" style="border-bottom:3px solid var(--ink)">
+    <div class="wrap">
+      <span class="eyebrow">About</span>
+      <h2>Where this actually stands.</h2>
+      <p class="lede" style="color:var(--ink);opacity:.85">A new organisation asking for trust
+        should be specific about what is real and what is not. This page is that.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <span class="eyebrow">Status, plainly</span>
+      <h2>In formation, September 2026.</h2>
+      <dl class="facts">
+        <div class="fact"><dt>Legal entity</dt><dd>Being confirmed. No charitable status is claimed on this site until it is verified in the IRS and Colorado records.</dd></div>
+        <div class="fact"><dt>Donations</dt><dd>Not open. Nothing on this site solicits money. When donations open they will run through an established platform, not through anything we built.</dd></div>
+        <div class="fact"><dt>Board</dt><dd>Being formed.</dd></div>
+        <div class="fact"><dt>City of Aspen</dt><dd>Early conversations with the mayor's office. Encouraging, and not yet a formal partnership.</dd></div>
+        <div class="fact"><dt>Colorado Parks and Wildlife</dt><dd>Not yet engaged. No plan proceeds without their area wildlife manager.</dd></div>
+        <div class="fact"><dt>First measurable target</dt><dd>One restoration site identified, owner agreed and permission secured, by spring 2027.</dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <section class="band ruled">
+    <div class="wrap">
+      <span class="eyebrow">Why this and not something else</span>
+      <h2>The gap is the food, not the trash.</h2>
+      <p class="lede">Aspen and Pitkin County have worked on attractants for years, and they have
+        worked on them well: mandatory wildlife-resistant containers, escalating fines, and county
+        grant money buying bear-resistant cans across the valley.</p>
+      <p class="lede">What nobody is funding is the wild food supply itself. That is the whole
+        reason this organisation exists. Duplicating the trash work would add nothing.</p>
+    </div>
+  </section>
+
+  <section class="ruled">
+    <div class="wrap">
+      <span class="eyebrow">Sources</span>
+      <h2>Where our numbers come from.</h2>
+      <dl class="facts">
+        <div class="fact"><dt>Bear activity</dt><dd>Colorado Parks and Wildlife statewide reporting, 2026.</dd></div>
+        <div class="fact"><dt>Forage species</dt><dd>CPW black bear conservation and management material.</dd></div>
+        <div class="fact"><dt>Feeding law</dt><dd>C.R.S. 33-6-131 and Colorado HB26-1342, signed 27 May 2026.</dd></div>
+        <div class="fact"><dt>Trash rules</dt><dd>City of Aspen trash ordinance; Pitkin County Code Title 6, Section 6.44.</dd></div>
+        <div class="fact"><dt>Permits</dt><dd>City of Aspen special events permitting guidance.</dd></div>
+      </dl>
+    </div>
+  </section>
+</div>
+
+<!-- ================= GET INVOLVED ================= -->
+<div class="view" id="v-involved">
+  <section class="band-gold" style="border-bottom:3px solid var(--ink)">
+    <div class="wrap">
+      <span class="eyebrow">Get involved</span>
+      <h2>Most of what we need right now is not money.</h2>
+      <p class="lede" style="color:var(--ink);opacity:.85">Donations are not open yet. These are
+        the things that actually move this forward this month.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="cards">
+        <article class="card"><span class="eyebrow">If you own land</span>
+          <h3>Talk to us about a site</h3>
+          <p>Private land in the right place, far from housing, is the fastest route to a first
+            planting. No commitment in a first conversation.</p></article>
+        <article class="card"><span class="eyebrow">If you run a business</span>
+          <h3>Become a founding partner</h3>
+          <p>Display the decal, join the directory, and hand visitors a straight answer about
+            bears. No fee in the first year.</p></article>
+        <article class="card"><span class="eyebrow">If you have time</span>
+          <h3>Plant, or teach</h3>
+          <p>Planting days need hands. Education needs people who can talk to visitors without
+            lecturing them.</p></article>
+        <article class="card"><span class="eyebrow">If you live here</span>
+          <h3>Fix your own attractants</h3>
+          <p>Secure the bin, take down the feeder, clear the fruit. It is unglamorous and it is
+            the single highest-return thing any resident can do.</p></article>
+      </div>
+      <div class="btns">
+        <a class="btn" href="mailto:hello@aspenbearweek.org?subject=Aspen%20Bear%20Week">Email us</a>
+      </div>
+      <p style="margin-top:18px;font-family:var(--mono);font-size:11.5px;line-height:1.7;color:var(--oak)">
+        Note: this address goes live with the domain. Until then, reach us through the organisers directly.
+      </p>
+    </div>
+  </section>
+</div>
+
+<footer>
+  <div class="wrap foot">
+    <div>
+      <span class="eyebrow">Aspen Bear Week &middot; Aspen, Colorado</span>
+      <p>An organisation in formation. Nothing on this site is a solicitation for donations, and
+         no charitable status is claimed. Photographs are illustrative and are not documentation
+         of specific sites, animals or events.</p>
+    </div>
+    <div>
+      <span class="eyebrow">Figures</span>
+      <p>Bear activity data from Colorado Parks and Wildlife reporting, 2026. Legal references:
+         C.R.S. 33-6-131 and HB26-1342.</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var views = ["home","work","aware","week","about","involved"];
+  var links = document.getElementById("links");
+  var burger = document.getElementById("burger");
+
+  function show(name){
+    if (views.indexOf(name) === -1) name = "home";
+    views.forEach(function(v){
+      var el = document.getElementById("v-" + v);
+      if (el) el.classList.toggle("on", v === name);
+    });
+    var as = links.querySelectorAll("a");
+    for (var i=0;i<as.length;i++){
+      var target = as[i].getAttribute("href").replace("#/","") || "home";
+      if (target === name) as[i].setAttribute("aria-current","page");
+      else as[i].removeAttribute("aria-current");
+    }
+    document.title = name === "home" ? "Aspen Bear Week"
+      : "Aspen Bear Week · " + name.charAt(0).toUpperCase() + name.slice(1);
+    links.classList.remove("open");
+    burger.setAttribute("aria-expanded","false");
+  }
+  function route(){
+    var h = (location.hash || "#/").replace("#/","").split("?")[0];
+    show(h || "home");
+    window.scrollTo(0,0);
+  }
+  burger.addEventListener("click", function(){
+    var open = links.classList.toggle("open");
+    burger.setAttribute("aria-expanded", open ? "true" : "false");
+  });
+  window.addEventListener("hashchange", route);
+  route();
+})();
+</script>

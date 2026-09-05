@@ -217,3 +217,118 @@
     html{scroll-behavior:auto}
     *{animation:none !important;transition:none !important}
   }
+
+  /* ============ CAPTURE ============
+     A line to write on, not a card. No box, no radius, no shadow: the field is
+     a rule, the way it is on a form printed letterpress. Works on bone and on
+     ink without a second component. */
+  .capture{margin-top:clamp(30px,4vw,46px);max-width:640px}
+  .cap-label{display:block;font-family:var(--display);font-size:clamp(17px,2.2vw,21px);
+             line-height:1.15;letter-spacing:-.005em;margin-bottom:14px}
+  .cap-row{display:flex;flex-wrap:wrap;gap:12px;align-items:stretch}
+  .cap-input,.cap-select{flex:1 1 240px;min-width:0;min-height:52px;
+             font-family:var(--body);font-size:17px;color:inherit;
+             background:transparent;border:0;border-bottom:2px solid var(--rule-hard);
+             padding:10px 2px;border-radius:0;-webkit-appearance:none;appearance:none}
+  .cap-input::placeholder{color:var(--oak);opacity:.55}
+  .cap-input:focus,.cap-select:focus{outline:0;border-bottom-color:var(--green)}
+  .cap-input:focus-visible,.cap-select:focus-visible{outline:3px solid var(--ink);
+             outline-offset:3px}
+  .cap-select{cursor:pointer;
+    background-image:linear-gradient(45deg,transparent 50%,currentColor 50%),
+                     linear-gradient(135deg,currentColor 50%,transparent 50%);
+    background-position:calc(100% - 13px) 22px,calc(100% - 7px) 22px;
+    background-size:6px 6px,6px 6px;background-repeat:no-repeat;padding-right:30px}
+  .cap-btn{flex:0 0 auto;min-height:52px}
+  .cap-note{font-family:var(--mono);font-size:11px;letter-spacing:.06em;line-height:1.7;
+            color:var(--oak);margin:13px 0 0;max-width:52ch}
+  .cap-note a{color:inherit;text-underline-offset:3px}
+  .cap-pending{font-family:var(--mono);font-size:12px;letter-spacing:.05em;line-height:1.75;
+               color:var(--oak);margin:0;max-width:48ch;
+               border-left:3px solid var(--rule-hard);padding-left:14px}
+
+  /* on the ink band the rule and the quiet text have to invert */
+  .band-ink .cap-input,.band-ink .cap-select{border-bottom-color:rgba(253,251,228,.4)}
+  .band-ink .cap-input::placeholder{color:var(--bone);opacity:.42}
+  .band-ink .cap-input:focus,.band-ink .cap-select:focus{border-bottom-color:var(--gold)}
+  .band-ink .cap-input:focus-visible,.band-ink .cap-select:focus-visible{
+             outline-color:var(--gold)}
+  .band-ink .cap-note,.band-ink .cap-pending{color:var(--bone);opacity:.72}
+  .band-ink .cap-pending{border-left-color:rgba(253,251,228,.4);opacity:.8}
+  .band-ink .cap-btn{background:var(--gold);color:var(--ink);border-color:var(--bone)}
+  .band-ink .cap-btn:hover{background:var(--bone)}
+  .band-gold .cap-input,.band-gold .cap-select{border-bottom-color:var(--ink)}
+  .band-gold .cap-input::placeholder{color:var(--ink);opacity:.5}
+  .band-gold .cap-note,.band-gold .cap-pending{color:var(--ink);opacity:.8}
+
+  /* ============ SITEWIDE SIGNUP BAND ============ */
+  .signup-band{border-top:3px solid var(--ink);padding-block:clamp(40px,5.5vw,72px)}
+  .signup-grid{display:grid;grid-template-columns:1fr;gap:clamp(24px,3vw,56px);
+               align-items:start}
+  @media (min-width:900px){ .signup-grid{grid-template-columns:1fr 1fr;gap:64px} }
+  .signup-h{font-family:var(--display);font-size:clamp(23px,3.1vw,36px);line-height:1.06;
+            letter-spacing:-.015em;margin:0;max-width:17ch}
+  .signup-p{font-size:15.5px;color:var(--bone);opacity:.78;margin:16px 0 0;max-width:46ch}
+  .signup-grid .capture{margin-top:0}
+
+  /* ============ INVOLVEMENT PATHS ============
+     Deliberately unequal. The two that unblock a planting season get the room;
+     the two that are advice sit underneath at half the weight. The layout is
+     telling you what the organisation actually needs. */
+  .paths{display:grid;grid-template-columns:1fr;gap:1px;background:var(--rule);
+         border:2px solid var(--ink);margin-top:clamp(28px,4vw,46px)}
+  .path{background:var(--bone);padding:26px 24px}
+  .path h3{margin:11px 0 10px;font-size:20px}
+  .path p{font-size:15.5px;margin:0;color:var(--oak)}
+  .path p + p{margin-top:11px}
+  .path .eyebrow{color:var(--oak)}
+  .path-lead{background:var(--bone-2)}
+  .path-lead h3{font-size:clamp(21px,2.6vw,25px)}
+  @media (min-width:840px){
+    .paths{grid-template-columns:1fr 1fr}
+    .path{padding:32px 30px}
+    .path-lead{padding:38px 30px}
+  }
+
+  /* ============ THE FUND GATE ============
+     Numbered because it genuinely is a sequence: each step needs the one above
+     it. This is the proof layer doing double duty as the reason there is no
+     donate button. */
+  .gate{list-style:none;counter-reset:g;margin:clamp(28px,4vw,44px) 0 0;padding:0;
+        border-top:1px solid rgba(253,251,228,.28)}
+  .gate-item{counter-increment:g;display:grid;grid-template-columns:auto 1fr;
+             gap:16px 18px;padding:20px 0;
+             border-bottom:1px solid rgba(253,251,228,.28)}
+  .gate-item::before{content:counter(g);font-family:var(--display);
+             font-size:clamp(26px,3.4vw,38px);line-height:.9;color:var(--gold);
+             font-variant-numeric:tabular-nums;grid-row:1 / span 2}
+  .gate-item h3{margin:0;font-size:clamp(16px,2vw,19px);text-transform:none;
+             letter-spacing:-.005em;align-self:center}
+  .gate-item p{margin:0;grid-column:2;font-size:15px;color:var(--bone);opacity:.74;
+             max-width:56ch}
+  @media (max-width:600px){
+    .gate-item{gap:8px 14px}
+    .gate-item h3{align-self:start}
+  }
+  .gate-foot{font-family:var(--mono);font-size:12px;letter-spacing:.05em;line-height:1.8;
+             margin:26px 0 0;max-width:56ch;opacity:.82}
+
+  /* Footer nav: real targets, so it is a nav rather than a line of text.
+     Separators are the gaps, not middots. */
+  .foot-links{display:flex;flex-wrap:wrap;gap:0 22px;margin-top:10px;
+              font-family:var(--mono);font-size:11px;letter-spacing:.08em;
+              text-transform:uppercase}
+  .foot-links a{display:inline-flex;align-items:center;min-height:44px;
+                color:inherit;text-decoration:none;
+                box-shadow:inset 0 -1px 0 currentColor}
+  .foot-links a:hover{color:var(--gold)}
+
+  /* The wordmark is the way home and has to be a target, not a caption. */
+  .brand{display:inline-flex;flex-direction:column;justify-content:center;
+         min-height:44px;padding-block:4px}
+
+  @media (prefers-reduced-motion:reduce){
+    *{animation-duration:.01ms !important;animation-iteration-count:1 !important;
+      transition-duration:.01ms !important;scroll-behavior:auto !important}
+    .btn:hover{transform:none}
+  }

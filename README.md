@@ -10,9 +10,21 @@ no database.** GitHub Pages serves the repo as-is.
 
 ## Security posture
 
-This site never handles money, credentials or personal data. Donations, when they open,
-run through an established third-party platform and are linked, never embedded as a form
-we wrote. There are no accounts, no login, no admin route and no secrets in this repo.
+This site handles no money and no credentials. It has no accounts, no login, no admin
+route, no server, no database and no secrets in the repo.
+
+**Email capture posts straight to a hosted email platform.** The list is stored there,
+never here: this repo contains no form handler and nothing that writes to disk. Consent,
+unsubscribes and suppression are the platform's job because they are compliance surface.
+Set `FORM_ACTION` in `build.py` to the platform endpoint. While it is empty every capture
+renders as an explanation with no input, so a half-wired form cannot reach the live site.
+
+**Donations, when they open, run through a hosted nonprofit platform, linked and never
+embedded as a form we wrote.** Four things gate that and they are listed on /get-involved/:
+confirmed 501(c)(3) status, an account the organisation controls, Colorado charitable
+solicitation registration, and platform onboarding. Until all four clear, this site
+carries no donate button and no amount field anywhere. That is a legal requirement, not
+a style choice.
 
 ## Custom domain
 
