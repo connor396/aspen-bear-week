@@ -366,3 +366,34 @@
   .band-ink .grid3 > *{background:var(--ink)}
   .band-ink .fig .eyebrow{color:var(--gold)}
   .band-ink .fig small{color:var(--bone);opacity:.75}
+
+  /* ============ THE MARK ============
+     Leaf-and-paw. Inherits currentColor so one file serves nav, ink bands and
+     the favicon without a second asset drifting out of sync. */
+  .mark{width:30px;height:30px;flex:0 0 auto;display:block}
+  .brand{display:inline-flex;flex-direction:row;align-items:center;gap:10px;
+         min-height:44px;padding-block:4px}
+  .brand-t{display:flex;flex-direction:column;justify-content:center;line-height:1.05}
+  @media (max-width:520px){ .mark{width:26px;height:26px} .brand{gap:8px} }
+
+  /* ============ THE COUNTER ============
+     A cause with a counter is working; a cause with only a mission statement is
+     hoping. Ours starts at zero, dated, which is more credible than a promise. */
+  /* Paint every colour explicitly. This block sat inside the ink status bar for
+     one build and silently inherited bone text on a bone ground, which is exactly
+     what inheriting a colour from a neighbour buys you. */
+  .counter{background:var(--bone-2);color:var(--ink);
+           border-bottom:2px solid var(--ink);
+           padding-block:clamp(26px,3.6vw,40px)}
+  .counter-grid{display:grid;grid-template-columns:1fr;gap:20px 40px;align-items:center}
+  @media (min-width:760px){ .counter-grid{grid-template-columns:auto 1fr;gap:48px} }
+  .counter-n{display:flex;flex-direction:column;align-items:flex-start;
+             border-left:6px solid var(--green);padding-left:18px}
+  .counter-n b{color:var(--ink);font-family:var(--display);font-size:clamp(54px,9vw,86px);line-height:.85;
+               letter-spacing:-.035em;font-variant-numeric:tabular-nums}
+  .counter-n .eyebrow{color:var(--oak);margin-top:9px}
+  .counter-lede{color:var(--ink);font-family:var(--display);font-size:clamp(16px,2.1vw,20px);line-height:1.25;
+                margin:0;max-width:34ch;letter-spacing:-.008em}
+  .counter-note{font-family:var(--mono);font-size:11.5px;letter-spacing:.05em;line-height:1.85;
+                color:var(--oak);margin:12px 0 0;max-width:56ch}
+  .counter-note b{color:var(--ink);font-weight:500}

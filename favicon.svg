@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" role="img" aria-label="Aspen Bear Week">
+  <rect width="100" height="100" fill="#F2A900"/>
+  <g transform="translate(50 50) scale(.82) translate(-50 -50)" fill="#3A2A16" fill-rule="evenodd">
+    <circle cx="22" cy="35" r="10"/>
+    <circle cx="40.5" cy="22.5" r="11"/>
+    <circle cx="59.5" cy="22.5" r="11"/>
+    <circle cx="78" cy="35" r="10"/>
+    <path d="M50 89
+             C 33 78, 22 68, 22 57.5
+             C 22 47.5, 32 42, 42 42
+             C 46 42, 48.6 45, 50 49.5
+             C 51.4 45, 54 42, 58 42
+             C 68 42, 78 47.5, 78 57.5
+             C 78 68, 67 78, 50 89
+             Z
+             M50 83.5
+             C 52.9 81.2, 53.9 79, 53.9 74.5
+             L 53.9 60
+             C 53.9 57.9, 52.2 56.5, 50 56.5
+             C 47.8 56.5, 46.1 57.9, 46.1 60
+             L 46.1 74.5
+             C 46.1 79, 47.1 81.2, 50 83.5
+             Z"/>
+  </g>
+</svg>

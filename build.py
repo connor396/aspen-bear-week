@@ -72,6 +72,8 @@ def head(p):
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Archivo:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="icon" href="{r}favicon.svg" type="image/svg+xml">
+<link rel="mask-icon" href="{r}favicon.svg" color="#3A2A16">
 <link rel="stylesheet" href="{r}assets/css/site.css">
 </head>
 <body>
@@ -86,7 +88,28 @@ def nav(current):
     )
     return f"""<nav class="nav">
   <div class="nav-in">
-    <a class="brand" href="{r}">Aspen Bear Week<small>Aspen, Colorado</small></a>
+    <a class="brand" href="{r}"><svg class="mark" viewBox="0 0 100 100" aria-hidden="true" focusable="false"><g fill="currentColor" fill-rule="evenodd">
+    <circle cx="22" cy="35" r="10"/>
+    <circle cx="40.5" cy="22.5" r="11"/>
+    <circle cx="59.5" cy="22.5" r="11"/>
+    <circle cx="78" cy="35" r="10"/>
+    <path d="M50 89
+             C 33 78, 22 68, 22 57.5
+             C 22 47.5, 32 42, 42 42
+             C 46 42, 48.6 45, 50 49.5
+             C 51.4 45, 54 42, 58 42
+             C 68 42, 78 47.5, 78 57.5
+             C 78 68, 67 78, 50 89
+             Z
+             M50 83.5
+             C 52.9 81.2, 53.9 79, 53.9 74.5
+             L 53.9 60
+             C 53.9 57.9, 52.2 56.5, 50 56.5
+             C 47.8 56.5, 46.1 57.9, 46.1 60
+             L 46.1 74.5
+             C 46.1 79, 47.1 81.2, 50 83.5
+             Z"/>
+  </g></svg><span class="brand-t">Aspen Bear Week<small>Aspen, Colorado</small></span></a>
     <button class="burger" id="burger" aria-expanded="false" aria-controls="links">Menu</button>
     <div class="links" id="links">{items}</div>
     <a class="cta" href="{r}get-involved/"><span class="cta-long">Get Involved</span><span class="cta-short">Join</span></a>
